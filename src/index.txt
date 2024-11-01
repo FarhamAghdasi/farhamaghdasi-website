@@ -1,0 +1,157 @@
+Folder PATH listing for volume Local Disk
+Volume serial number is 928B-30D6
+D:.
+¦   App.jsx
+¦   index.js
+¦   index.txt
+¦   
++---assets
+¦   +---css
+¦   ¦   ¦   common_style.css
+¦   ¦   ¦   font.css
+¦   ¦   ¦   inner_pages.css
+¦   ¦   ¦   pe-icon-7-stroke.css
+¦   ¦   ¦   personal.css
+¦   ¦   ¦   plugins.css
+¦   ¦   ¦   
+¦   ¦   +---fonts
+¦   ¦           fa-brands-400.ttf
+¦   ¦           fa-brands-400.woff2
+¦   ¦           fa-regular-400.ttf
+¦   ¦           fa-regular-400.woff2
+¦   ¦           fa-solid-900.ttf
+¦   ¦           fa-solid-900.woff2
+¦   ¦           fa-v4compatibility.ttf
+¦   ¦           fa-v4compatibility.woff2
+¦   ¦           themify.woff
+¦   ¦           
+¦   +---imgs
+¦       ¦   faqs.jpg
+¦       ¦   favicon.ico
+¦       ¦   Logo-light.svg
+¦       ¦   menu-shape.png
+¦       ¦   plus-solid.svg
+¦       ¦   smoke-bg.jpg
+¦       ¦   
+¦       +---blog
+¦       ¦   ¦   1.webp
+¦       ¦   ¦   2.webp
+¦       ¦   ¦   3.jpg
+¦       ¦   ¦   
+¦       ¦   +---blog1
+¦       ¦   ¦       1.jpg
+¦       ¦   ¦       2.jpg
+¦       ¦   ¦       3.jpg
+¦       ¦   ¦       4.jpg
+¦       ¦   ¦       5.jpg
+¦       ¦   ¦       6.jpg
+¦       ¦   ¦       a1.jpg
+¦       ¦   ¦       a2.jpg
+¦       ¦   ¦       
+¦       ¦   +---post
+¦       ¦           1.jpg
+¦       ¦           2.jpg
+¦       ¦           3.jpg
+¦       ¦           a1.jpg
+¦       ¦           
+¦       +---demos
+¦       ¦       1.png
+¦       ¦       2.png
+¦       ¦       3.png
+¦       ¦       4.png
+¦       ¦       
+¦       +---header
+¦       ¦       1.png
+¦       ¦       
+¦       +---icons
+¦       ¦       arrow-top-right.svg
+¦       ¦       long-arrow-alt-left-solid.svg
+¦       ¦       long-arrow-alt-right-solid.svg
+¦       ¦       
+¦       +---intro
+¦       ¦       1.webp
+¦       ¦       2.webp
+¦       ¦       
+¦       +---portfolio
+¦       ¦   +---works2
+¦       ¦   ¦       1.jpg
+¦       ¦   ¦       2.jpg
+¦       ¦   ¦       3.jpg
+¦       ¦   ¦       4.jpg
+¦       ¦   ¦       5.jpg
+¦       ¦   ¦       6.jpg
+¦       ¦   ¦       
+¦       ¦   +---works3
+¦       ¦           1.jpg
+¦       ¦           2.jpg
+¦       ¦           3.jpg
+¦       ¦           4.jpg
+¦       ¦           
+¦       +---serv
+¦       ¦       0.jpg
+¦       ¦       1.jpg
+¦       ¦       2.jpg
+¦       ¦       3.jpg
+¦       ¦       
+¦       +---services
+¦       ¦       1.jpg
+¦       ¦       img1.jpg
+¦       ¦       img2.jpg
+¦       ¦       
+¦       +---skills
+¦       ¦       bootstrap.png
+¦       ¦       html.png
+¦       ¦       js.png
+¦       ¦       s1.png
+¦       ¦       s2.png
+¦       ¦       s3.png
+¦       ¦       s4.png
+¦       ¦       s5.png
+¦       ¦       seo.png
+¦       ¦       
+¦       +---team
+¦       ¦       avatar1.jpg
+¦       ¦       avatar2.jpg
+¦       ¦       avatar3.jpg
+¦       ¦       avatar4.jpg
+¦       ¦       avatar5.jpg
+¦       ¦       
+¦       +---testim
+¦       ¦       img.jpg
+¦       ¦       vector_quote.svg
+¦       ¦       
+¦       +---works
+¦               1.webp
+¦               4.webp
+¦               6.jpg
+¦               7.png
+¦               
++---components
+¦       About.jsx
+¦       Bio.jsx
+¦       Blog.jsx
+¦       BlogContent.jsx
+¦       BlogPageContent.jsx
+¦       Faq.jsx
+¦       Footer.jsx
+¦       Header.jsx
+¦       Hero.jsx
+¦       HtmlTemplate.jsx
+¦       index.js
+¦       Inner.jsx
+¦       Portfolio.jsx
+¦       Services.jsx
+¦       ServicesLine.jsx
+¦       Skills.jsx
+¦       Work.jsx
+¦       
++---pages
+        About.jsx
+        Blog.jsx
+        Bloginfo.jsx
+        Home.jsx
+        Html-templates.jsx
+        index.js
+        Services.jsx
+        Works.jsx
+        
