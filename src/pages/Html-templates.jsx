@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
 import { Header, Footer, Inner } from '../components';
+import SEO from '../SEO'; // Import the SEO component
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,6 +77,11 @@ const HtmlTemplates = () => {
 
   return (
     <>
+      <SEO 
+        title="HTML Templates"
+        description="Explore a collection of HTML templates designed by Farham Aghdasi. Find various templates for your web development projects."
+        url={window.location.href}
+      />
       <Header />
       <Inner title="HTML Templates" first="Home" secend="HTML Templates" />
       <section className="work-card section-padding pt-0">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header, Footer, BlogContent } from '../components';
+import SEO from '../SEO'; // Import the SEO component
 
 const Bloginfo = () => {
   const { slug } = useParams(); // گرفتن slug از URL
@@ -33,6 +34,13 @@ const Bloginfo = () => {
 
   return (
     <>
+      {post && (
+        <SEO 
+          title={post.title.rendered || "Default Blog Title"}
+          description={post.excerpt || "Read this insightful blog post on programming and web development."}
+          url={window.location.href}
+        />
+      )}
       <Header />
       <BlogContent post={post} /> {/* ارسال داده به BlogContent */}
       <Footer />

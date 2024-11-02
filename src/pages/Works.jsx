@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
 import { Header, Footer, Inner } from '../components';
+import SEO from '../SEO'; // Import the SEO component
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,6 +73,11 @@ const WorksPage = () => {
 
   return (
     <>
+      <SEO 
+        title="My Works"
+        description="Explore the portfolio of Farham Aghdasi showcasing various projects and HTML templates."
+        url={window.location.href}
+      />
       <Header />
       <Inner
         title="My Works"

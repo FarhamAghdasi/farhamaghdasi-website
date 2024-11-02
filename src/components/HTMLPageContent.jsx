@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
+import SEO from '../SEO';
 
 const HTMLPageContent = ({ template }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -11,6 +12,13 @@ const HTMLPageContent = ({ template }) => {
       setActiveIndex(index); // Open the clicked item
     }
   };
+
+  <SEO 
+  title={template.title.rendered || "HTML Template | Farham Aghdasi"}
+  description={template.content.rendered || "HTML Template | Farham Aghdasi"}
+  image={template.main_image}
+  url={window.location.href}
+/>
 
   return (
     <>
