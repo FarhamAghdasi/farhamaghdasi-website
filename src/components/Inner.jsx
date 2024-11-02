@@ -3,7 +3,7 @@ import assets_imgssmoke_bg from '../assets/imgs/smoke-bg.jpg';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Inner = ({ title, first, secend, paragraph, links }) => {
+const Inner = ({ title, first, secend, paragraph, links, contact }) => {
   return (
     <header className="header-pg">
       <div className="container">
@@ -21,7 +21,21 @@ const Inner = ({ title, first, secend, paragraph, links }) => {
           </div>
         </div>
       </div>
-      <div className="bg-img" data-background={assets_imgssmoke_bg} />
+      {contact ? (
+        <div className="google-map">
+          <iframe
+            id="gmap_canvas"
+            src="https://maps.google.com/maps?q=hollwood&t=&z=11&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      ) : (
+        <div className="bg-img" data-background={assets_imgssmoke_bg} />
+      )}
     </header>
   );
 };

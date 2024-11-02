@@ -1537,9 +1537,21 @@
 .contact-pg textarea {
     min-height: 180px;
 }
+.no-data-message {
+    position: relative;
+    width: 100%;
+    z-index: 999999;
+    color: #fff;
+}
 
 .contact-pg .butn:hover {
-    background: var(--main-color) !important;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5);
+    background: #000;
+}
+
+.contact-pg .butn:hover .icon img {
+    filter: brightness(0) invert(1);
 }
 
 /* ====================== [ Start Responsive ] ====================== */

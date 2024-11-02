@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
 import assets_imgs_skillshtml from '../assets/imgs/skills/html.png';
 import assets_imgs_skillsjs from '../assets/imgs/skills/js.png';
@@ -40,12 +40,12 @@ const Skills = () => {
                   Get to know my professional skills!
                   <br /> I build your dream website
                 </h2>
-                <a href="#0" className="butn-under mt-15">
-                  View All Works{" "}
+                <Link href="/about/" className="butn-under mt-15">
+                  View My Skills{" "}
                   <span className="icon">
                     <img src={common_imgs_iconsarrow_top_right} alt=""   />
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -117,56 +117,51 @@ const Skills = () => {
         <div className="slide-har st1">
           <div className="box">
             <div className="item">
-              <h2>
+              <p>
                 <span>React</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Tailwind</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Wordpress</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Bootstrap</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Jquery</span>
-              </h2>
+              </p>
             </div>
           </div>
           <div className="box">
             <div className="item">
-              <h2>
-                <span>Creative</span>
-              </h2>
-            </div>
-            <div className="item">
-              <h2>
+              <p>
                 <span>Flexiable</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Dedicated</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Creative</span>
-              </h2>
+              </p>
             </div>
             <div className="item">
-              <h2>
+              <p>
                 <span>Flexiable</span>
-              </h2>
+              </p>
             </div>
           </div>
         </div>

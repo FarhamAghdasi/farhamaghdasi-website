@@ -3689,8 +3689,8 @@ img.left {
         padding-top: 120px;
         padding-bottom: 120px;
     }
-    .marquee .item h2,
-    .marquee-text .item h2 {
+    .marquee .item p,
+    .marquee-text .item p {
         font-size: 20vw !important;
     }
     footer .float_txt {

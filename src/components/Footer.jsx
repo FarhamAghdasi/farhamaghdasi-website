@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 
@@ -7,7 +8,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="top-content text-center">
-          <h2><a href="#contact">Get In Touch</a></h2>
+          <h2><Link to="/contact/">Get In Touch</Link></h2>
           <h6 className="float_txt js-title">Connect</h6>
         </div>
         <div className="main-content">

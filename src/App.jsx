@@ -17,7 +17,7 @@ import WOW from 'wowjs';
 /**
  * Import Pages
  */
-import { Home, AboutPage, BlogPage, BlogInfo, HtmlTemplates, ServicesPage, WorksPage } from './pages';
+import { Home, AboutPage, BlogPage, BlogInfo, HtmlTemplates, ServicesPage, WorksPage, Htmlinfo, PortfolioInfo, Contact } from './pages';
 
 /**
  * Component for setting background images and colors
@@ -56,17 +56,21 @@ const App = () => {
 
   return (
     <Router>
-      <BackgroundSetter /> {/* استفاده از کامپوننت BackgroundSetter */}
+    <BackgroundSetter />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about/" element={<AboutPage />} />
         <Route path="/blog/" element={<BlogPage />} />
-        <Route path="/blog-info/" element={<BlogInfo />} />
+        <Route path="/blog/:slug" element={<BlogInfo />} />
         <Route path="/html-templates/" element={<HtmlTemplates />} />
+        <Route path="/html-templates/:slug" element={<Htmlinfo />} />
         <Route path="/services/" element={<ServicesPage />} />
         <Route path="/portfolio/" element={<WorksPage />} />
+        <Route path="/portfolio/:slug" element={<PortfolioInfo />} />
+        <Route path="/contact/" element={<Contact />} />
       </Routes>
     </Router>
+
   );
 };
 

@@ -155,14 +155,15 @@
     padding: 0 80px !important;
 }
 
-.marquee .item:nth-of-type(even) h2 span {
+.marquee .item:nth-of-type(even) p span {
     color: transparent !important;
     -webkit-text-stroke: 1px #000;
 }
 
-.marquee .item h2 {
+.marquee .item p {
     font-size: 10vw;
     font-weight: 600;
+    color: #000;
 }
 
 /* --------------- Works --------------- */
@@ -345,7 +346,20 @@
         width: 120px;
     }
 }
-
+.messages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+    text-decoration: underline;
+}
+.phone a {
+    transition: all 0.3s;
+}
+.phone a:hover {
+    color: #fff;
+}
 /* --------------- Clients --------------- */
 
 .skills .item {

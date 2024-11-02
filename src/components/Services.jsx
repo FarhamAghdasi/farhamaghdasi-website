@@ -6,6 +6,7 @@ import assets_imgs_serv2 from '../assets/imgs/serv/2.jpg';
 import assets_imgs_serv3 from '../assets/imgs/serv/3.jpg';
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const services = [
   {
@@ -55,12 +56,12 @@ const Services = () => {
                 What areas am I
                 <br /> skilled in?
               </h2>
-              <a href="#0" className="butn-under mt-15">
-                View All Works{" "}
+              <Link href="/about/" className="butn-under mt-15">
+                React About My Skills{" "}
                 <span className="icon invert">
                   <img src={common_imgs_iconsarrow_top_right} alt="" />
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

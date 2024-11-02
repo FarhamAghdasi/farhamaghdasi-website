@@ -5,3 +5,6 @@ export { default as Home } from './Home';
 export { default as HtmlTemplates } from './Html-templates';
 export { default as ServicesPage } from './Services';
 export { default as WorksPage } from './Works';
+export { default as Htmlinfo } from './Htmlinfo';
+export { default as PortfolioInfo } from './PortfolioInfo';
+export { default as Contact } from './Contact'

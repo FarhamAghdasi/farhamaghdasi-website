@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 
 const Hero = () => {
+    const [startTyping, setStartTyping] = useState(false);
+
+    useEffect(() => {
+        // بعد از 1 ثانیه تایپ کردن را آغاز کن
+        const timer = setTimeout(() => {
+            setStartTyping(true);
+        }, 1000); // زمان تاخیر به میلی‌ثانیه (1000 میلی‌ثانیه = 1 ثانیه)
+
+        // پاک کردن تایمر در صورت unmount شدن کامپوننت
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <header className="header-personal h-100">
             <div className="container ontop">
-                <div className="caption text-center" >
+                <div className="caption text-center">
                     <h1>
                         Farham <br /> Aghdasi
                     </h1>
@@ -14,15 +26,17 @@ const Hero = () => {
                     <div className="col-lg-7 col-md-10">
                         <div className="text-center">
                             <h2>
-                                <Typewriter
-                                    words={["Junior Front-End Developer", "Junior SEO", "Junior React Developer"]}
-                                    loop={true}
-                                    cursor
-                                    cursorStyle='_'
-                                    typeSpeed={100}
-                                    deleteSpeed={50}
-                                    delaySpeed={1500}
-                                />
+                                {startTyping && (
+                                    <Typewriter
+                                        words={["Junior Front-End Developer", "Junior SEO", "Junior React Developer" , "Junior PHP Developer"]}
+                                        loop={true}
+                                        cursor
+                                        cursorStyle='_'
+                                        typeSpeed={100}
+                                        deleteSpeed={50}
+                                        delaySpeed={1500}
+                                    />
+                                )}
                             </h2>
                             <div className="social-icons new">
                                 <a href="https://t.me/farhamaghdasi">
