@@ -3,8 +3,8 @@
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Telegram Bot API Token and Chat ID
-$botToken = "7359974888:AAEMHe_UeyRGRK2wjmpCfI23YWF8unbD8Ro";
-$chatId = "5296263534";
+$botToken = "";
+$chatId = "";
 
 // Create the message text
 $message = "New contact form submission:\n";
