@@ -22,7 +22,7 @@ const ContactPageContent = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('https://farhamaghdasi.ir/api/contact.php', {
+      const response = await fetch('https://api.farhamaghdasi.ir/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

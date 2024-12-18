@@ -1,0 +1,84 @@
+    /* استایل لیست کامنت‌ها */
+  .comments-list {
+    margin: 20px;
+    padding: 20px;
+    background-color: #1f1f1f; /* پس‌زمینه تیره */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* استایل خود کامنت‌ها */
+  .comment {
+    background-color: #2b2b2b; /* پس‌زمینه تیره‌تر */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* هدر کامنت‌ها */
+  .comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* استایل آواتار */
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  /* جزئیات کامنت (نام نویسنده و تاریخ) */
+  .comment-details h6 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #f0f0f0; /* رنگ سفید برای متن */
+  }
+  
+  .comment-details small {
+    font-size: 0.9rem;
+    color: #bbb; /* رنگ خاکی برای تاریخ */
+  }
+  
+  /* متن کامنت */
+  .comment-body p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc; /* رنگ خاکی روشن برای متن */
+  }
+  
+  /* استایل برای پاسخ‌ها */
+  .reply {
+    margin-left: 20px;
+    background-color: #3a3a3a; /* پس‌زمینه تیره‌تر برای پاسخ‌ها */
+  }
+  
+  .replies {
+    margin-top: 10px;
+  }
+  
+  .replies .comment {
+    margin-bottom: 5px;
+    background-color: #3a3a3a; /* پس‌زمینه تیره‌تر برای پاسخ‌ها */
+  }
+  
+  /* زمانی که کامنتی وجود ندارد */
+  .comments-list p {
+    color: #888;
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  /* اضافه کردن حالت hover به کامنت‌ها */
+  .comment:hover {
+    background-color: #383838; /* رنگ تیره‌تر هنگام hover */
+  }
+  
+  .comment-header:hover .avatar {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  

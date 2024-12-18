@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
 import { Header, Footer, Inner } from '../components';
-import SEO from '../SEO'; // Import the SEO component
+import SEO from '../SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,13 +14,14 @@ const HtmlTemplates = () => {
   useEffect(() => {
     const fetchTemplates = async () => {
       try {
-        const response = await fetch('https://farhamaghdasi.ir/api/wp-json/wp/v2/html_template', {
-          headers: {
-            'domain': 'farhamaghdasi.ir',
-          },
-        });
+        const response = await fetch('https://api.farhamaghdasi.ir/templates');
         const data = await response.json();
-        setTemplates(Array.isArray(data) ? data : []);
+
+        if (data.templates && Array.isArray(data.templates)) {
+          setTemplates(data.templates);
+        } else {
+          setTemplates([]);
+        }
       } catch (error) {
         console.error('Error fetching templates:', error);
         setTemplates([]);
@@ -29,11 +30,8 @@ const HtmlTemplates = () => {
     fetchTemplates();
   }, []);
 
-  // Transform API link to React-friendly link
-  const transformLink = (apiLink) => {
-    const path = apiLink.replace('https://farhamaghdasi.ir/api/html-templates/', '');
-    return `https://farhamaghdasi.ir/html-templates/${path}`;
-  };
+  // Transform URL for template details
+  const transformLink = (url) => `https://farhamaghdasi.ir/html-templates/${url}/`;
 
   return (
     <>
@@ -48,37 +46,48 @@ const HtmlTemplates = () => {
         <div className="container">
           <div className="cards">
             {templates.length > 0 ? (
-              templates.map((portfolio, index) => (
+              templates.map((template, index) => (
                 <div
                   className="card-item"
                   ref={(el) => (cardsRef.current[index] = el)}
-                  key={portfolio.id}
+                  key={index}
                 >
                   <div className="d-lg-flex align-items-end">
                     <div>
                       <div className="tags">
-                        {portfolio.portfolio_category && portfolio.portfolio_category.length > 0 ? (
-                          portfolio.portfolio_category.map((cat, idx) => (
-                            <a href="#" key={idx}>
-                              {cat}
-                            </a>
-                          ))
+                        {template.category ? (
+                          <a href="#">{template.category}</a>
                         ) : (
-                          <span>No Tags</span>
+                          <span>No Category</span>
                         )}
                       </div>
                       <h3 className="title">
-                        <a href={transformLink(portfolio.link)}>{portfolio.title.rendered}</a>
+                        <a href={transformLink(template.url)}>{template.title}</a>
                       </h3>
                     </div>
                     <div className="ml-auto">
                       <a
-                        href={transformLink(portfolio.link)}
-                        className="butn butn-md butn-bord butn-rounded"
+                        href={template.buyLink}
+                        className="mr-3 butn butn-md butn-bord butn-rounded"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <div className="d-flex align-items-center">
-                          <span>View Project</span>
-                          <span className="icon invert ml-10">
+                          <span>Buy Now</span>
+                          <span className="icon invert ml-10 n">
+                            <img src={common_imgs_iconsarrow_top_right} alt="" />
+                          </span>
+                        </div>
+                      </a>
+                      <a
+                        href={transformLink(template.url)}
+                        className="mr-3 butn butn-md butn-bord butn-rounded"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className="d-flex align-items-center">
+                          <span>View Template</span>
+                          <span className="icon invert ml-10 n">
                             <img src={common_imgs_iconsarrow_top_right} alt="" />
                           </span>
                         </div>
@@ -87,14 +96,14 @@ const HtmlTemplates = () => {
                   </div>
                   <div className="img fit-img mt-30">
                     <img
-                      src={portfolio.featured_image_url || 'default_image_url.jpg'}
-                      alt={portfolio.title.rendered}
+                      src={`https://api.farhamaghdasi.ir/backend/${template.thumbnail}` || 'default_image_url.jpg'}
+                      alt={template.title}
                     />
                   </div>
                 </div>
               ))
             ) : (
-              <p className="no-data-message">No Portfolio found.</p>
+              <p className="no-data-message">No Templates found.</p>
             )}
           </div>
         </div>
@@ -103,6 +112,5 @@ const HtmlTemplates = () => {
     </>
   );
 };
-
 
 export default HtmlTemplates;

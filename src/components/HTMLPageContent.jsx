@@ -14,11 +14,11 @@ const HTMLPageContent = ({ template }) => {
   };
 
   <SEO 
-  title={template.title.rendered || "HTML Template"}
-  description={template.content.rendered || "HTML Template"}
-  image={template.main_image}
-  url={window.location.href}
-/>
+    title={template.title.rendered || "HTML Template"}
+    description={template.content.rendered || "HTML Template"}
+    image={template.main_image}
+    url={window.location.href}
+  />
 
   return (
     <>
@@ -123,6 +123,20 @@ const HTMLPageContent = ({ template }) => {
                     </div>
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-center mt-80">
+            <div className="col-lg-8 text-center">
+              <h3>Pricing and Purchase</h3>
+              <p>Price: {template.price || 'N/A'}0 IRR</p>
+              <div className="btn-group mt-30">
+                <a href={template.preview_link || '#'} className="btn btn-primary">
+                  View Preview
+                </a>
+                <a href={template.purchase_link || '#'} className="btn btn-success" target="_blank" rel="noopener noreferrer">
+                  Buy Now
+                </a>
               </div>
             </div>
           </div>

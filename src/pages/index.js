@@ -8,3 +8,5 @@ export { default as WorksPage } from './Works';
 export { default as Htmlinfo } from './Htmlinfo';
 export { default as PortfolioInfo } from './PortfolioInfo';
 export { default as Contact } from './Contact'
+export { default as Page404 } from './Page404'
+export { default as MaintenancePage } from './MaintenancePage'

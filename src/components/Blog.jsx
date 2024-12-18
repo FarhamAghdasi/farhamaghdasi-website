@@ -1,33 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
-import assets_imgs_blog3 from '../assets/imgs/blog/3.jpg'; // می‌توانید این را به صورت داینامیک بارگذاری کنید
-import { Link } from 'react-router-dom'
+import assets_imgs_blog3 from '../assets/imgs/blog/3.jpg'; // تصویر پیش‌فرض
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
-
-  // دامنه
-  const domain = "farhamaghdasi.ir";
-
-  // تابع برای دریافت مطالب بلاگ
-  const fetchBlogPosts = async () => {
-    try {
-      const response = await fetch(`https://farhamaghdasi.ir/api/wp-json/wp/v2/posts`, {
-        method: 'GET',
-        headers: {
-          'domain': domain, // کلید دامنه در هدر
-        },
-      });
-      const data = await response.json();
-      setPosts(data);
-    } catch (error) {
-      console.error('Error fetching blog posts:', error);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchBlogPosts();
+    fetch('https://api.farhamaghdasi.ir/posts')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // استخراج آرایه posts از داده‌های دریافت‌شده
+        setPosts(data.posts || []); 
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
   }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <section className="blog-cst section-padding">
@@ -35,7 +41,7 @@ const Blog = () => {
         <div className="sec-head mb-80">
           <div className="d-flex">
             <div>
-              <span className="sub-head">My Expertise</span>
+              <span className="sub-head">My Article's</span>
             </div>
             <div className="ml-auto">
               <div className="bract">
@@ -49,7 +55,7 @@ const Blog = () => {
                 <h2>
                   Check My Blog <br /> Content in the web world
                 </h2>
-                <Link href="/blog/" className="butn-under mt-15">
+                <Link to="/blog/" className="butn-under mt-15">
                   View All Posts{" "}
                   <span className="icon invert">
                     <img src={common_imgs_iconsarrow_top_right} alt="" />
@@ -62,12 +68,15 @@ const Blog = () => {
         <div className="row md-marg">
           {/* نمایش ۳ مطلب بلاگ */}
           {posts.length > 0 ? (
-            posts.slice(0, 3).map((post) => (
-              <div className="col-lg-4" key={post.id}>
+            posts.slice(0, 3).map((post, index) => (
+              <div className="col-lg-4" key={index}>
                 <div className="item">
                   <div className="img fit-img">
-                    <img src={post.featured_media_url || assets_imgs_blog3} alt={post.title.rendered} />
-                    <a href={post.link} target="_blank" rel="noopener noreferrer" className="butn">
+                    <img 
+                      src={post.thumbnail ? `https://api.farhamaghdasi.ir/backend/${post.thumbnail}` : assets_imgs_blog3} 
+                      alt={post.title} 
+                    />
+                    <a href={`https://farhamaghdasi.ir/blog/${post.url}/`} className="butn">
                       <span className="icon">
                         <img src={common_imgs_iconsarrow_top_right} alt="" />
                       </span>
@@ -75,9 +84,10 @@ const Blog = () => {
                   </div>
                   <div className="cont mt-30">
                     <h5>
-                      <a href={post.link} target="_blank" rel="noopener noreferrer">{post.title.rendered}</a>
+                      <a href={`https://farhamaghdasi.ir/blog/${post.url}/`}>{post.title}</a>
                     </h5>
                     <span className="main-color">{post.category || 'General'}</span>
+                    <p>{post.short_description}</p>
                   </div>
                 </div>
               </div>

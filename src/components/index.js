@@ -10,8 +10,10 @@ export { default as ServicesLine } from './ServicesLine';
 export { default as Services } from './Services';
 export { default as Skills } from './Skills';
 export { default as Bio } from './Bio';
-export { default as BlogContent } from './BlogContent';
 export { default as BlogPageContent } from './BlogPageContent'
-export { default as PortfolioPageContent } from './PortfolioPageContent'
 export { default as HTMLPageContent } from './HTMLPageContent'
 export { default as ContactPageContent } from './ContactPageContent'
+export { default as Share } from './Share'
+export {default as CreateCaptcha } from './Createcaptcha'
+export {default as ScrollToTop } from './ScrollTop'
+export {default as ListComments} from './ListComments'

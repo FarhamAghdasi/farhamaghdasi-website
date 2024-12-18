@@ -1,104 +1,67 @@
 import React, { useEffect, useState } from 'react';
-import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
-import assets_imgs_works1 from '../assets/imgs/works/1.webp'; // می‌توانید این را به صورت داینامیک بارگذاری کنید
 
 const Work = () => {
   const [htmlTemplates, setHtmlTemplates] = useState([]);
   const [portfolios, setPortfolios] = useState([]);
-
-  // دامنه
-  const domain = "farhamaghdasi.ir";
-
-  // تابع برای دریافت قالب‌های HTML
-  const fetchHtmlTemplates = async () => {
-    try {
-      const response = await fetch(`https://farhamaghdasi.ir/api/wp-json/wp/v2/html_template`, {
-        method: 'GET',
-        headers: {
-          'domain': domain, // کلید دامنه در هدر
-        },
-      });
-      const data = await response.json();
-      setHtmlTemplates(data);
-    } catch (error) {
-      console.error('Error fetching HTML templates:', error);
-    }
-  };
+  const [loading, setLoading] = useState(true);
 
   // تابع برای دریافت نمونه کارها
   const fetchPortfolios = async () => {
     try {
-      const response = await fetch(`https://farhamaghdasi.ir/api/wp-json/wp/v2/portfolio`, {
-        method: 'GET',
-        headers: {
-          'domain': domain, // کلید دامنه در هدر
-        },
-      });
+      const response = await fetch('https://api.farhamaghdasi.ir/portfolios');
       const data = await response.json();
-      setPortfolios(data);
+      setPortfolios(data.portfolio || []); // دسترسی به آرایه‌ی اصلی
     } catch (error) {
       console.error('Error fetching portfolios:', error);
     }
   };
 
+  // تابع برای دریافت قالب‌های HTML
+  const fetchHtmlTemplates = async () => {
+    try {
+      const response = await fetch('https://api.farhamaghdasi.ir/templates');
+      const data = await response.json();
+      setHtmlTemplates(data.templates || []); // دسترسی به آرایه‌ی اصلی
+    } catch (error) {
+      console.error('Error fetching HTML templates:', error);
+    }
+  };
+
+  // درخواست داده‌ها در اولین رندر
   useEffect(() => {
-    fetchHtmlTemplates();
-    fetchPortfolios();
+    const fetchData = async () => {
+      await Promise.all([fetchPortfolios(), fetchHtmlTemplates()]);
+      setLoading(false); // بارگذاری پایان یافته
+    };
+    fetchData();
   }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="work-min ontop bord-thin-top-light">
       <div className="container pt-30 bord-thin-top-light">
         <div className="sec-head mb-80">
-          <div className="d-flex">
-            <div>
-              <span className="sub-head">Top Works</span>
-            </div>
-            <div className="ml-auto">
-              <div className="bract">
-                {"{"} <span /> {"}"}
-              </div>
-            </div>
-          </div>
-          <div className="row mt-30">
-            <div className="col-lg-5 offset-lg-3 col-md-7">
-              <div className="sm-mb30">
-                <h2>
-                  My New Front-End <br /> Develops
-                </h2>
-                <a href="#0" className="butn-under mt-15">
-                  View All Works{" "}
-                  <span className="icon invert">
-                    <img src={common_imgs_iconsarrow_top_right} alt="" />
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-5">
-              <div className="text">
-                <span>
-                  Creating awesome websites <br />
-                  <span className="opacity-5 mt-10">Check It Now ! With ❤️</span>
-                </span>
-              </div>
-            </div>
-          </div>
+          <h2>My Projects and Templates</h2>
         </div>
         <div className="row">
           {/* نمایش نمونه کارها */}
           {portfolios.length > 0 ? (
             portfolios.slice(0, 2).map((portfolio) => (
-              <div className="col-lg-6" key={portfolio.id}>
+              <div className="col-lg-6" key={portfolio.url}>
                 <div className="item md-mb50">
                   <div className="img fit-img">
-                    <img src={portfolio.image_url || assets_imgs_works1} alt={portfolio.title.rendered} />
+                    <img src={`https://api.farhamaghdasi.ir/backend/${portfolio.thumbnail}`} alt={portfolio.title} />
                   </div>
                   <div className="cont mt-30">
                     <div className="info">
                       <span className="date">{new Date(portfolio.date).getFullYear()}</span>
                       <span className="tag">{portfolio.category || 'Portfolio'}</span>
                     </div>
-                    <h5>{portfolio.title.rendered}</h5>
+                    <h5><a href={`http://farhamaghdasi.ir/portfolio/${portfolio.url}/`}>{portfolio.title}</a></h5>
+                    <p>{portfolio.Shortdescription}</p>
                   </div>
                 </div>
               </div>
@@ -111,17 +74,18 @@ const Work = () => {
           {/* نمایش قالب‌های HTML */}
           {htmlTemplates.length > 0 ? (
             htmlTemplates.slice(0, 2).map((template) => (
-              <div className="col-lg-6" key={template.id}>
+              <div className="col-lg-6" key={template.url}>
                 <div className="item md-mb50">
                   <div className="img fit-img">
-                    <img src={template.image_url || assets_imgs_works1} alt={template.title.rendered} />
+                    <img src={`https://api.farhamaghdasi.ir/backend/${template.thumbnail}`} alt={template.title} />
                   </div>
                   <div className="cont mt-30">
                     <div className="info">
                       <span className="date">{new Date(template.date).getFullYear()}</span>
                       <span className="tag">{template.category || 'HTML Template'}</span>
                     </div>
-                    <h5>{template.title.rendered}</h5>
+                    <h5><a href={`http://farhamaghdasi.ir/html-templates/${template.url}/`}>{template.title}</a></h5>
+                    <p>{template.Shortdescription}</p>
                   </div>
                 </div>
               </div>
@@ -137,4 +101,4 @@ const Work = () => {
   );
 };
 
-export default Work
+export default Work;

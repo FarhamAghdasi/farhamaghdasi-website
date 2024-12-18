@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
@@ -14,18 +14,27 @@ const WorksPage = () => {
   useEffect(() => {
     const fetchPortfolioData = async () => {
       try {
-        const response = await fetch('https://farhamaghdasi.ir/api/wp-json/wp/v2/portfolio', {
+        const response = await fetch('https://api.farhamaghdasi.ir/portfolios', {
+          method: 'GET',
           headers: {
-            'domain': 'farhamaghdasi.ir',
+            'Content-Type': 'application/json',
           },
         });
+
+        // بررسی وضعیت پاسخ قبل از پردازش داده‌ها
+        if (!response.ok) {
+          throw new Error('Failed to fetch portfolio data');
+        }
+
         const data = await response.json();
-        setPortfolioData(data);
+
+        // فرض می‌کنیم که داده‌ها در آرایه 'portfolio' قرار دارند
+        setPortfolioData(data.portfolio || []); // بررسی آرایه‌ی 'portfolio'
       } catch (error) {
         console.error('Error fetching portfolio data:', error);
       }
     };
-    
+
     fetchPortfolioData();
 
     const cards = cardsRef.current;
@@ -71,8 +80,8 @@ const WorksPage = () => {
 
   // Transform API link to React-friendly link
   const transformLink = (apiLink) => {
-    const path = apiLink.replace('https://farhamaghdasi.ir/api/portfolio/', '');
-    return `https://farhamaghdasi.ir/portfolio/${path}`;
+    const path = apiLink.replace('https://api.farhamaghdasi.ir/portfolios', '');
+    return `https://farhamaghdasi.ir/portfolio/${path}/`;
   };
 
   return (
@@ -98,33 +107,26 @@ const WorksPage = () => {
                 <div
                   className="card-item"
                   ref={(el) => (cardsRef.current[index] = el)}
-                  key={portfolio.id}
+                  key={portfolio.title}
                 >
                   <div className="d-lg-flex align-items-end">
                     <div>
                       <div className="tags">
-                        {portfolio.portfolio_category && portfolio.portfolio_category.length > 0 ? (
-                          portfolio.portfolio_category.map((cat, idx) => (
-                            <a href="#" key={idx}>
-                              {cat}
-                            </a>
-                          ))
-                        ) : (
-                          <span>No Tags</span>
-                        )}
+                        {/* نمایش دسته‌بندی یا نشان دادن "بدون برچسب" */}
+                        <a href="#">{portfolio.category}</a>
                       </div>
                       <h3 className="title">
-                        <a href={transformLink(portfolio.link)}>{portfolio.title.rendered}</a>
+                        <a href={transformLink(portfolio.url)}>{portfolio.title}</a>
                       </h3>
                     </div>
                     <div className="ml-auto">
                       <a
-                        href={transformLink(portfolio.link)}
+                        href={transformLink(portfolio.url)}
                         className="butn butn-md butn-bord butn-rounded"
                       >
                         <div className="d-flex align-items-center">
                           <span>View Project</span>
-                          <span className="icon invert ml-10">
+                          <span className="icon invert ml-10 n">
                             <img src={common_imgs_iconsarrow_top_right} alt="" />
                           </span>
                         </div>
@@ -132,9 +134,10 @@ const WorksPage = () => {
                     </div>
                   </div>
                   <div className="img fit-img mt-30">
+                    {/* استفاده از تصویر بندانگشتی */}
                     <img
-                      src={portfolio.featured_image_url || 'default_image_url.jpg'}
-                      alt={portfolio.title.rendered}
+                      src={`https://api.farhamaghdasi.ir/backend/${portfolio.thumbnail}`}
+                      alt={portfolio.title}
                     />
                   </div>
                 </div>

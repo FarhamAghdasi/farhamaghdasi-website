@@ -1,9 +1,8 @@
 import assets_imgssmoke_bg from '../assets/imgs/smoke-bg.jpg';
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Inner = ({ title, first, secend, paragraph, links, contact }) => {
+const Inner = ({ title, first, secend, paragraph, links, contact, cpage, noimage }) => {
   return (
     <header className="header-pg">
       <div className="container">
@@ -18,9 +17,12 @@ const Inner = ({ title, first, secend, paragraph, links, contact }) => {
                 {paragraph} <Link to="/html-templates/">{links}</Link>
               </p>
             )}
+      {cpage && <div>{cpage}</div>}
+
           </div>
         </div>
       </div>
+
       {contact ? (
         <div className="google-map">
           <iframe
@@ -33,9 +35,9 @@ const Inner = ({ title, first, secend, paragraph, links, contact }) => {
             loading="lazy"
           ></iframe>
         </div>
-      ) : (
+      ) : !noimage ? (
         <div className="bg-img" data-background={assets_imgssmoke_bg} />
-      )}
+      ) : null} {/* اگر noimage فعال باشد، تصویر پس‌زمینه نمایش داده نمی‌شود */}
     </header>
   );
 };

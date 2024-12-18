@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 
-const Header = () => {
+const Header = ({ loading }) => {
     const [isHovered, setIsHovered] = useState(false);
     const svgRef = useRef(null);
     const cursorRef = useRef(null);
@@ -23,7 +23,7 @@ const Header = () => {
             const scroll = window.scrollY;
             const height = document.documentElement.scrollHeight - window.innerHeight;
             const pathLength = 307.919; // مقدار طول مسیر
-    
+
             if (height > 0) {
                 const progressValue = pathLength - (scroll * pathLength / height);
                 setStrokeDashoffset(progressValue); // بروزرسانی offset
@@ -72,7 +72,7 @@ const Header = () => {
 
         // انیمیشن loader
         tl.to(".loader-wrap-heading .load-text, .loader-wrap-heading", {
-            delay: 1,
+            delay: 2,
             y: -100,
             opacity: 0,
             onComplete: () => {
@@ -190,7 +190,7 @@ const Header = () => {
         <>
             <div className="loader-wrap">
                 <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
-                    <path ref={svgRef} d="M0,1005S175,995,500,995s500,5,500,5V0H0Z" />
+                    <path d="M0,1005S175,995,500,995s500,5,500,5V0H0Z" />
                 </svg>
                 <div className="loader-wrap-heading">
                     <div className="load-text">
@@ -207,17 +207,17 @@ const Header = () => {
             <div ref={cursorRef} className="cursor" />
             <canvas className="banner_canvas" id="canvas_banner" />
             <div className={`progress-wrap cursor-pointer ${isProgressActive ? 'active-progress' : ''}`} onClick={scrollToTop}>
-    <svg className="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-        <path
-            d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-            style={{
-                transition: 'stroke-dashoffset 10ms linear',
-                strokeDasharray: '307.919, 307.919',
-                strokeDashoffset: strokeDashoffset,
-            }}
-        />
-    </svg>
-</div>
+                <svg className="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                    <path
+                        d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                        style={{
+                            transition: 'stroke-dashoffset 10ms linear',
+                            strokeDasharray: '307.919, 307.919',
+                            strokeDashoffset: strokeDashoffset,
+                        }}
+                    />
+                </svg>
+            </div>
 
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
@@ -309,22 +309,19 @@ const Header = () => {
                     {/* Contact Info */}
                     <div className="cont-info valign">
                         <div className="text-center full-width">
-                            <div className="logo">
-                                <img src={common_imgsLogo_light} alt="" />
-                            </div>
                             <div className="social-icon mt-40">
-                                <a to="https://github.com/FarhamAghdasi/"><i className="fab fa-github" /></a>
-                                <a to="https://t.me/farhamaghdasi"><i className="fab fa-telegram" /></a>
-                                <a to="https://instagram.com/farhamaghdasi"><i className="fab fa-instagram" /></a>
+                                <a href="https://github.com/FarhamAghdasi/"><i className="fab fa-github" /></a>
+                                <a href="https://t.me/farhamaghdasi"><i className="fab fa-telegram" /></a>
+                                <a href="https://instagram.com/farhamaghdasi"><i className="fab fa-instagram" /></a>
                             </div>
                             <div className="item mt-30">
                                 <h5>Amol , Mazandaran Province, <br /> Iran</h5>
                             </div>
                             <div className="item mt-10">
-                                <h5><a to="tel:+989391213094">+98 939 1213094</a></h5>
+                                <h5><a href="tel:+989391213094">+98 939 1213094</a></h5>
                             </div>
                             <div className="item mt-10">
-                                <h5><a to="mailto:farhamaghdasi08@gmail.com">farhamaghdasi08@gmail.com</a></h5>
+                                <h5><a href="mailto:farhamaghdasi08@gmail.com">farhamaghdasi08@gmail.com</a></h5>
                             </div>
                         </div>
                     </div>
