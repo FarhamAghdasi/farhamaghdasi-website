@@ -372,6 +372,7 @@ figure {
     -webkit-transition: all 0.7s cubic-bezier(1, 0, 0.55, 1);
     -o-transition: all 0.7s cubic-bezier(1, 0, 0.55, 1);
     transition: all 0.7s cubic-bezier(1, 0, 0.55, 1);
+    overflow-y: auto;
 }
 
 .hamenu:after {

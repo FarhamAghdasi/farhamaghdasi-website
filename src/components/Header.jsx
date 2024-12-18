@@ -1,5 +1,5 @@
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
-import common_imgsLogo_light from '../assets/imgs/Logo-light.svg';
+import common_imgsLogo_light from '../assets/imgs/Logo-light.png';
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -313,19 +313,18 @@ const Header = () => {
                                 <img src={common_imgsLogo_light} alt="" />
                             </div>
                             <div className="social-icon mt-40">
-                                <a to="#"><i className="fab fa-facebook-f" /></a>
-                                <a to="#"><i className="fab fa-x-twitter" /></a>
-                                <a to="#"><i className="fab fa-linkedin-in" /></a>
-                                <a to="#"><i className="fab fa-instagram" /></a>
+                                <a to="https://github.com/FarhamAghdasi/"><i className="fab fa-github" /></a>
+                                <a to="https://t.me/farhamaghdasi"><i className="fab fa-telegram" /></a>
+                                <a to="https://instagram.com/farhamaghdasi"><i className="fab fa-instagram" /></a>
                             </div>
                             <div className="item mt-30">
-                                <h5>541 Melville Geek, <br /> Palo Alto, CA 94301</h5>
+                                <h5>Amol , Mazandaran Province, <br /> Iran</h5>
                             </div>
                             <div className="item mt-10">
-                                <h5><a to="#0">+012 345 678 90</a></h5>
+                                <h5><a to="tel:+989391213094">+98 939 1213094</a></h5>
                             </div>
                             <div className="item mt-10">
-                                <h5><a to="#0">hello@domain.com</a></h5>
+                                <h5><a to="mailto:farhamaghdasi08@gmail.com">farhamaghdasi08@gmail.com</a></h5>
                             </div>
                         </div>
                     </div>

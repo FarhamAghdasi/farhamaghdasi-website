@@ -6,8 +6,8 @@ import SEO from '../SEO'; // Import the SEO component
 
 const Home = () => {
   return (
-    <div className='smof1'>
-      <SEO 
+    <>
+        <SEO 
         title="Front-end Developer"
         description="Welcome to my personal website. I am Farham Aghdasi, a programmer specializing in web development and software solutions."
         url={window.location.href}
@@ -19,7 +19,7 @@ const Home = () => {
       <Skills />
       <Blog />
       <Footer />
-    </div>
+    </>
   );
 };
 

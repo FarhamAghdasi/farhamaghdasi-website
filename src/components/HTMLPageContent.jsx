@@ -14,8 +14,8 @@ const HTMLPageContent = ({ template }) => {
   };
 
   <SEO 
-  title={template.title.rendered || "HTML Template | Farham Aghdasi"}
-  description={template.content.rendered || "HTML Template | Farham Aghdasi"}
+  title={template.title.rendered || "HTML Template"}
+  description={template.content.rendered || "HTML Template"}
   image={template.main_image}
   url={window.location.href}
 />

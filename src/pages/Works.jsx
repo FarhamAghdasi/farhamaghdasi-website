@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import common_imgs_iconsarrow_top_right from '../assets/imgs/icons/arrow-top-right.svg';
 import { Header, Footer, Inner } from '../components';
-import SEO from '../SEO'; // Import the SEO component
+import SEO from '../SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,16 +12,15 @@ const WorksPage = () => {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    // Fetch data from the portfolio API
     const fetchPortfolioData = async () => {
       try {
         const response = await fetch('https://farhamaghdasi.ir/api/wp-json/wp/v2/portfolio', {
           headers: {
-            'domain': 'farhamaghdasi.ir', // اضافه کردن دامنه در هدر
+            'domain': 'farhamaghdasi.ir',
           },
         });
         const data = await response.json();
-        setPortfolioData(data); // ذخیره داده‌ها در استیت
+        setPortfolioData(data);
       } catch (error) {
         console.error('Error fetching portfolio data:', error);
       }
@@ -29,7 +28,6 @@ const WorksPage = () => {
     
     fetchPortfolioData();
 
-    // ScrollTrigger animations
     const cards = cardsRef.current;
     const scrollTriggers = [];
 
@@ -71,6 +69,12 @@ const WorksPage = () => {
     };
   }, []);
 
+  // Transform API link to React-friendly link
+  const transformLink = (apiLink) => {
+    const path = apiLink.replace('https://farhamaghdasi.ir/api/portfolio/', '');
+    return `https://farhamaghdasi.ir/portfolio/${path}`;
+  };
+
   return (
     <>
       <SEO 
@@ -99,19 +103,23 @@ const WorksPage = () => {
                   <div className="d-lg-flex align-items-end">
                     <div>
                       <div className="tags">
-                        {portfolio.tags.map((tag, idx) => (
-                          <a href={`#`} key={idx}>
-                            {tag}
-                          </a>
-                        ))}
+                        {portfolio.portfolio_category && portfolio.portfolio_category.length > 0 ? (
+                          portfolio.portfolio_category.map((cat, idx) => (
+                            <a href="#" key={idx}>
+                              {cat}
+                            </a>
+                          ))
+                        ) : (
+                          <span>No Tags</span>
+                        )}
                       </div>
                       <h3 className="title">
-                        <a href={portfolio.link}>{portfolio.title.rendered}</a>
+                        <a href={transformLink(portfolio.link)}>{portfolio.title.rendered}</a>
                       </h3>
                     </div>
                     <div className="ml-auto">
                       <a
-                        href={portfolio.link}
+                        href={transformLink(portfolio.link)}
                         className="butn butn-md butn-bord butn-rounded"
                       >
                         <div className="d-flex align-items-center">
@@ -125,7 +133,7 @@ const WorksPage = () => {
                   </div>
                   <div className="img fit-img mt-30">
                     <img
-                      src={portfolio.featured_image_url}
+                      src={portfolio.featured_image_url || 'default_image_url.jpg'}
                       alt={portfolio.title.rendered}
                     />
                   </div>
